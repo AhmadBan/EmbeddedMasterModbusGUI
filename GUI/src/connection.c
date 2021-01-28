@@ -37,7 +37,7 @@ extern lv_style_t style_box;
 
 
 //-------Connection Section
-#include <myModbus.h>
+#include <main.h>
 
 static void tcpBtnEvent_handler(lv_obj_t * obj, lv_event_t event)
 {

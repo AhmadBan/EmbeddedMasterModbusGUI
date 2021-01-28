@@ -11,7 +11,7 @@
 #if defined(LV_LVGL_H_INCLUDE_SIMPLE)
 #include "lvgl.h"
 #else
-#include "../../lvgl/lvgl.h"
+#include "../../libLVGL/lvgl/lvgl.h"
 #endif
 
 #if defined(LV_EX_CONF_PATH)
@@ -23,7 +23,7 @@
 #elif defined(LV_EX_CONF_INCLUDE_SIMPLE)
 #include "lv_ex_conf.h"
 #else
-#include "../../lv_ex_conf.h"
+#include "../../libLVGL/lv_ex_conf.h"
 #endif
 #include "stdio.h"
 

@@ -15,9 +15,9 @@
 #define SDL_MAIN_HANDLED /*To fix SDL's "undefined reference to WinMain" \
                             issue*/
 #include <SDL2/SDL.h>
-#include "lvgl/lvgl.h"
-#include "lv_drivers/display/monitor.h"
-#include "lv_drivers/indev/mouse.h"
+#include "libLVGL/lvgl/lvgl.h"
+#include "libLVGL/lv_drivers/display/monitor.h"
+#include "libLVGL/lv_drivers/indev/mouse.h"
 
 
 /*********************
@@ -47,6 +47,33 @@ lv_indev_t *kb_indev;
 /**********************
  *   GLOBAL FUNCTIONS
  **********************/
+modbus_t *mb;
+
+uint16_t tab_reg[32];
+extern lv_obj_t * ipTa;
+extern lv_obj_t * portTa;
+char *temp1,*temp2;
+
+void tcpModbusInit(){
+	int port=0;
+
+	temp1=lv_textarea_get_text(ipTa);
+	temp2=lv_textarea_get_text(portTa);
+	sscanf(temp2,"%d",&port);
+	mb =  modbus_new_tcp(temp1, port);
+	modbus_set_debug(mb, 1);
+}
+
+int tcpModbusConnect(void){
+	 return  modbus_connect(mb);
+}
+
+
+void tcpModbusDisconnect(void){
+	  modbus_close(mb);
+	  modbus_free(mb);
+}
+
 
 int main(int argc, char **argv)
 {
