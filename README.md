@@ -20,7 +20,8 @@ to compile the project you need to add SDL2 library to your compiler.
 ![Image](./Doc/AO.jpg)
 
 
-###ToDoes
+### ToDoes
+- [ ] Add Test cases
 - [x] Modbus-TCP Master 
 - [ ] Modbus-RTU Master
 - [X] Add CMake support
