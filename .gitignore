@@ -1,4 +1,5 @@
 Debug/
+build/
 .settings/
 lv_dev_tools/
 **/*.o

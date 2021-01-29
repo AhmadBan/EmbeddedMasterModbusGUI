@@ -6,13 +6,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR})
 
-file(GLOB_RECURSE INCLUDES "lv_drivers/*.h" "lv_examples/*.h"  "lvgl/*.h"  "./*.h" )
-file(GLOB_RECURSE SOURCES  "lv_drivers/*.c" "lv_examples/*.c"  "lvgl/*.c" )
+file(GLOB_RECURSE INCLUDES "lv_drivers/*.h"   "lvgl/*.h"  "./*.h" )
+file(GLOB_RECURSE SOURCES  "lv_drivers/*.c"   "lvgl/*.c" )
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin) 
 
 find_package(SDL2 REQUIRED SDL2)
 include_directories(${SDL2_INCLUDE_DIRS})
-add_executable(main main.c mouse_cursor_icon.c ${SOURCES} ${INCLUDES})
-target_link_libraries(main PRIVATE SDL2 )
-add_custom_target (run COMMAND ${EXECUTABLE_OUTPUT_PATH}/main)
+add_library(lvgl STATIC  mouse_cursor_icon.c ${SOURCES} ${INCLUDES})
+target_link_libraries(lvgl PRIVATE SDL2 )
+#add_custom_target (run COMMAND ${EXECUTABLE_OUTPUT_PATH}/main)
